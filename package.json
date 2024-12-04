@@ -1,0 +1,160 @@
+{
+  "name": "daytona-community",
+  "displayName": "Daytona Community",
+  "description": "Daytona Community VS Code extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:daytona-explorer"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "daytona-community.addProfile",
+        "title": "Create",
+        "icon": "$(add)"
+      },
+      {
+        "command": "daytona-community.deleteProfile",
+        "title": "Delete Profile",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "daytona-community.deleteProfileByName",
+        "title": "Delete Profile by Name",
+        "category": "Daytona"
+      },
+      {
+        "command": "daytona-community.setDefaultProfile",
+        "title": "Set as Default Profile"
+      },
+      {
+        "command": "daytona-community.editProfile",
+        "title": "Edit",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "daytona-community.deleteProfileConfig",
+        "title": "Delete",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "daytona-community.addWorkspace",
+        "title": "Create",
+        "icon": "$(add)"
+      },
+      {
+        "command": "daytona-community.deleteWorkspace",
+        "title": "Delete Workspace",
+        "icon": "$(trash)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "daytona-explorer",
+          "title": "Daytona Community",
+          "icon": "assets/images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "daytona-explorer": [
+        {
+          "id": "daytonaWorkspaces",
+          "name": "Workspaces"
+        },
+        {
+          "id": "daytonaSamples",
+          "name": "Sample Projects"
+        },
+        {
+          "id": "daytonaProfiles",
+          "name": "Profiles"
+        },
+        {
+          "id": "daytonaHelp",
+          "name": "Help and Feedback",
+          "icon": "$(question)"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "daytonaProfiles",
+        "contents": "No profiles found. To get started, create a new profile.\n[Create Profile](command:daytona-community.addProfile)",
+        "when": "!hasProfiles"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "daytona-community.addProfile",
+          "when": "view == daytonaProfiles",
+          "group": "navigation"
+        },
+        {
+          "command": "daytona-community.addWorkspace",
+          "when": "view == daytonaWorkspaces",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "daytona-community.editProfile",
+          "when": "view == daytonaProfiles && viewItem == profile",
+          "group": "1_modification"
+        },
+        {
+          "command": "daytona-community.deleteProfile",
+          "when": "view == daytonaProfiles && viewItem == profile",
+          "group": "inline"
+        },
+        {
+          "command": "daytona-community.setDefaultProfile",
+          "when": "view == daytonaProfiles && viewItem == profile",
+          "group": "1_modification"
+        },
+        {
+          "command": "daytona-community.deleteWorkspace",
+          "when": "view == daytonaWorkspaces && viewItem == workspace",
+          "group": "inline"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "daytona-community.deleteProfileByName",
+          "when": "view == daytonaProfiles"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "npx tsc -p ./",
+    "watch": "npx tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.9"
+  }
+}

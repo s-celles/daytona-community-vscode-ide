@@ -1,0 +1,13 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <!-- Hexagone avec ligne -->
+    <path d="M12 4 L18 8 L18 16 L12 20 L6 16 L6 8 Z" 
+          fill="none" 
+          stroke="currentColor" 
+          stroke-width="1.5"/>
+    
+    <!-- "D" stylisé -->
+    <path d="M9 8 L13 8 C15 8 15 16 13 16 L9 16 L9 8" 
+          fill="none"
+          stroke="currentColor" 
+          stroke-width="1.5"/>
+</svg>
